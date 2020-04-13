@@ -1,8 +1,11 @@
-const devConfig = {};
-const testConfig = {};
-const prodConfig = {};
+//MongoDB url
+const devConfig = { MONGO_URL: 'mongodb+srv://Munditoro:munditoro@crudtest-h3y3e.mongodb.net/Api-dev?retryWrites=true&w=majority' };
+const testConfig = { MONGO_URL: 'mongodb+srv://Munditoro:munditoro@crudtest-h3y3e.mongodb.net/Api?retryWrites=true&w=majority' };
+const prodConfig = { MONGO_URL: 'mongodb+srv://Munditoro:munditoro@crudtest-h3y3e.mongodb.net/Api?retryWrites=true&w=majority' };
+
+
 const defaultConfig = {
-    PORT: proccess.env.PORT || 3000,
+    PORT: process.env.PORT || 3000,
 };
 
 function envConfig(env) {
