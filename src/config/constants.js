@@ -1,7 +1,13 @@
 //MongoDB url
-const devConfig = { MONGO_URL: 'mongodb+srv://Munditoro:munditoro@crudtest-h3y3e.mongodb.net/Api-dev?retryWrites=true&w=majority' };
+const devConfig = { 
+    MONGO_URL: 'mongodb+srv://Munditoro:munditoro@crudtest-h3y3e.mongodb.net/Api-dev?retryWrites=true&w=majority',
+    JWT_SECRET: 'papagayo',
+};
 const testConfig = { MONGO_URL: 'mongodb+srv://Munditoro:munditoro@crudtest-h3y3e.mongodb.net/Api?retryWrites=true&w=majority' };
-const prodConfig = { MONGO_URL: 'mongodb+srv://Munditoro:munditoro@crudtest-h3y3e.mongodb.net/Api?retryWrites=true&w=majority' };
+const prodConfig = { 
+    MONGO_URL: 'mongodb+srv://Munditoro:munditoro@crudtest-h3y3e.mongodb.net/Api?retryWrites=true&w=majority',
+    JWT_SECRET: 'papagayo',
+};
 
 
 const defaultConfig = {

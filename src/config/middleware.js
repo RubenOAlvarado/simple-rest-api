@@ -2,6 +2,7 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import helmet from 'helmet';
+import passport from 'passport';
 
 import {isPrimitive} from 'util';
 
@@ -18,6 +19,10 @@ export default app => {
     app.use(bodyParser.urlencoded({
         extended: true
     }));
-    if(isDev)
+
+    app.use(passport.initialize());
+    
+    if(isDev){
         app.use(morgan('dev'));
+    }
 }
