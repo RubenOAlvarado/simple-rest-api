@@ -10,15 +10,16 @@ const app = express();
 
 middlewareConfig(app);
 
-app.get('/', (res,req) => {
-    res.setEncoding('Hello world!');
+app.get('/', (res, req) => {
+  res.setEncoding('Hello world!');
 });
 
 apiRoutes(app);
 
-app.listen(constants.PORT, err => {
-    if(err) throw err;
+app.listen(constants.PORT, (err) => {
+  if (err) throw err;
 
-    console.log(`Server running on port: ${constants.PORT} --- Running on ${process.env.NODE_ENV} --- Make something great.!`)
-    
+  console.log(
+    `Server running on port: ${constants.PORT} --- Running on ${process.env.NODE_ENV} --- Make something great.!`,
+  );
 });

@@ -5,46 +5,45 @@ import { Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt';
 import constants from '../config/constants';
 
 const localOpts = {
-    usernameField: 'email',
-}
+  usernameField: 'email',
+};
 
-const localStrategy = new LocalStrategy(localOpts, async (email, password, done) => {
+const localStrategy = new LocalStrategy(
+  localOpts,
+  async (email, password, done) => {
     try {
-        const user = await User.findOne({
-            email
-        });
+      const user = await User.findOne({
+        email,
+      });
 
-        if(!user)
-            return done(null, false);
-        else if(!user.authenticateUser(password))
-            return done(null, false);
+      if (!user) return done(null, false);
+      else if (!user.authenticateUser(password)) return done(null, false);
 
-        return done(null, user);
+      return done(null, user);
     } catch (error) {
-        return done(error, false);
+      return done(error, false);
     }
-});
+  },
+);
 
 const jwtOpts = {
-    jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt'),
-    secretOrKey: constants.JWT_SECRET,
+  jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme('jwt'),
+  secretOrKey: constants.JWT_SECRET,
 };
 
 const jwtStrategy = new JWTStrategy(jwtOpts, async (payload, done) => {
-    try {
-        const user = await User.findById(payload._id);
+  try {
+    const user = await User.findById(payload._id);
 
-        if(!user)
-            return done(null, false)
-        else
-            return done(null, user);
-    } catch (error) {
-        return done(error, false);
-    }
+    if (!user) return done(null, false);
+    else return done(null, user);
+  } catch (error) {
+    return done(error, false);
+  }
 });
 
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-export const authLocal = passport.authenticate('local', { session: false }); 
-export const authJwt = passport.authenticate('jwt', {session:false});
+export const authLocal = passport.authenticate('local', { session: false });
+export const authJwt = passport.authenticate('jwt', { session: false });

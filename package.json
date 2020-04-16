@@ -7,7 +7,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "dev:build": "yarn run clean && webpack -w",
-    "dev": "cross-env NODE_ENV=development nodemon dist/index.bundle.js"
+    "dev": "cross-env NODE_ENV=development nodemon dist/index.bundle.js",
+    "prettier": "prettier --single-quote --print-width 80 --trailing-comma all --write 'src/**/*.js'"
   },
   "dependencies": {
     "bcrypt-nodejs": "^0.0.3",
@@ -17,13 +18,16 @@
     "express": "^4.17.1",
     "express-validation": "^1.0.2",
     "helmet": "^3.22.0",
+    "http-status": "^1.4.2",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.7",
+    "mongoose-unique-validator": "^2.0.3",
     "nodemon": "^2.0.3",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
+    "slug": "^2.1.1",
     "validator": "^13.0.0"
   },
   "devDependencies": {
@@ -32,7 +36,9 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
     "morgan": "^1.10.0",
+    "prettier": "^2.0.4",
     "rimraf": "^3.0.2",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
